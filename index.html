@@ -447,6 +447,7 @@
     Your browser does not support the video tag.
 </video>
   <button class="btn-secondary" style="margin-top:24px;" onclick="showScreen('screen-choice')">Back</button>
+  </div>
 </div>
 
 <!-- ============================================
@@ -479,7 +480,7 @@
   // security -- anyone who reads the file's code
   // could find the password.
   // ============================================
-  const correctPassword = "1122"; // <-- EDIT THIS
+  const correctPassword = "karuna"; // <-- EDIT THIS
 
   function checkPassword() {
     const entered = document.getElementById('password-input').value;
@@ -496,7 +497,6 @@
   document.getElementById('password-input').addEventListener('keyup', function(e) {
     if (e.key === 'Enter') checkPassword();
   });
-
   // ============================================
   // FLOATING HEARTS BACKGROUND (purely decorative)
   // ============================================
@@ -528,7 +528,20 @@
   observer.observe(thankYouEl, { attributes: true, attributeFilter: ['class'] });
 
   
-  // Go Back button runs away 3 times
+  
+function fireConfetti(){
+  for(let i=0;i<80;i++){
+    const c=document.createElement('div');
+    c.className='confetti-piece';
+    c.style.left=Math.random()*100+'vw';
+    c.style.background=['#ff6f91','#f4b942','#ffe3ea','#d94f70'][Math.floor(Math.random()*4)];
+    c.style.animationDuration=(2+Math.random()*2)+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4500);
+  }
+}
+
+// Go Back button runs away 3 times
   // ==============================
 // GO BACK BUTTON RUNS AWAY
 // ==============================
@@ -576,6 +589,7 @@ function moveButton() {
     else if (tries == 3) {
         goBackBtn.innerHTML = "Catch Me 😂";
     }
+}
 </script>
 </body>
 </html>
