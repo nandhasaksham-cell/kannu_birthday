@@ -188,12 +188,13 @@
     color: #5f6368;
 }
 
-  ...gallery-grid {
+  ....gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1);
+    grid-template-columns: repeat(3, 1fr);
     gap: 6px;
-    width: 150%;
+    width: 100%;
     max-width: 600px;
+    margin: 0 auto;
     z-index: 1;
 }
   .gallery-grid .photo {
@@ -275,7 +276,15 @@
     height: 14px;
     opacity: 0.9;
     animation: confettiFall linear forwards;
-  
+  @media (max-width:768px){
+
+    .gallery-grid{
+        grid-template-columns:repeat(3,1fr);
+        gap:5px;
+        width:100%;
+    }
+
+}
 </style>
 </head>
 <body>
