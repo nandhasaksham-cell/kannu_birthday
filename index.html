@@ -517,21 +517,67 @@
       }
     });
     observer.observe(thankYouEl, { attributes: true, attributeFilter: ['class'] });
+function fireConfetti(){
+  for(let i=0;i<80;i++){
+    const c=document.createElement('div');
+    c.className='confetti-piece';
+    c.style.left=Math.random()*100+'vw';
+    c.style.background=['#ff6f91','#f4b942','#ffe3ea','#d94f70'][Math.floor(Math.random()*4)];
+    c.style.animationDuration=(2+Math.random()*2)+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4500);
+  }
+}
 
-    function fireConfetti() {
-      const colors = ['#ff6f91', '#f4b942', '#ffb3c6', '#d94f70', '#ffe3ea'];
-      for (let i = 0; i < 60; i++) {
-        const piece = document.createElement('div');
-        piece.className = 'confetti-piece';
-        piece.style.left = Math.random() * 100 + 'vw';
-        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-        piece.style.animationDuration = (2.5 + Math.random() * 2) + 's';
-        piece.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
-        thankYouEl.appendChild(piece);
-        setTimeout(function() { piece.remove(); }, 5000);
-      }
+// Go Back button runs away 3 times
+  // ==============================
+// GO BACK BUTTON RUNS AWAY
+// ==============================
+
+let tries = 0;
+
+const goBackBtn = document.getElementById("goBackBtn");
+
+goBackBtn.addEventListener("mouseenter", moveButton);
+
+function moveButton() {
+
+    if (tries >= 3) {
+
+        goBackBtn.style.position = "static";
+        goBackBtn.innerHTML = "Okay ❤️";
+
+        goBackBtn.onclick = function () {
+            tries = 0;
+            showScreen("screen-ask");
+        };
+
+        return;
     }
-  </script>
 
+    goBackBtn.style.position = "fixed";
+
+    const maxX = window.innerWidth - goBackBtn.offsetWidth - 20;
+    const maxY = window.innerHeight - goBackBtn.offsetHeight - 20;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    goBackBtn.style.left = randomX + "px";
+    goBackBtn.style.top = randomY + "px";
+
+    tries++;
+
+    if (tries == 1) {
+        goBackBtn.innerHTML = "Really? 🥺";
+    }
+    else if (tries == 2) {
+        goBackBtn.innerHTML = "Pleaseee 😭";
+    }
+    else if (tries == 3) {
+        goBackBtn.innerHTML = "Catch Me 😂";
+    }
+}
+</script>
   </body>
   </html>
