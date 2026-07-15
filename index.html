@@ -321,13 +321,19 @@
      SCREEN 3: ANGRY "HOW DARE YOU" PAGE
      ============================================ -->
 <div class="screen" id="screen-angry">
-  <h1>😡 HOW DARE YOU</h1>
-  <p class="subtitle">You really don't wanna see it?
-<button id="goBackBtn"
-class="btn-secondary"
-style="border-color:#ff9aa8; color:#ff9aa8;">
-Go Back
-</button>
+    <h1>😡 HOW DARE YOU</h1>
+
+    <p class="subtitle">
+        You really don't wanna see it?<br>
+        Please. Try again.
+    </p>
+
+    <button
+        id="goBackBtn"
+        class="btn-secondary"
+        style="border-color:#ff9aa8; color:#ff9aa8;">
+        Go Back
+    </button>
 </div>
 
 <!-- ============================================
@@ -521,14 +527,14 @@ Go Back
   });
   observer.observe(thankYouEl, { attributes: true, attributeFilter: ['class'] });
 
+  
   // Go Back button runs away 3 times
-let tries = 0;
-
-const goBackBtn = document.getElementById("goBackBtn");
-
-goBackBtn.addEventListener("mouseover", moveButton);
+  // ==============================
+// GO BACK BUTTON RUNS AWAY
+// ==============================
 
 let tries = 0;
+
 const goBackBtn = document.getElementById("goBackBtn");
 
 goBackBtn.addEventListener("mouseenter", moveButton);
@@ -536,21 +542,47 @@ goBackBtn.addEventListener("mouseenter", moveButton);
 function moveButton() {
 
     if (tries >= 3) {
-        goBackBtn.innerHTML = "Okay ❤️";
+
         goBackBtn.style.position = "static";
+        goBackBtn.innerHTML = "Okay ❤️";
+
         goBackBtn.onclick = function () {
+            tries = 0;
             showScreen("screen-ask");
         };
+
         return;
     }
 
     goBackBtn.style.position = "fixed";
 
-    const x = Math.random() * (window.innerWidth - goBackBtn.offsetWidth);
-    const y = Math.random() * (window.innerHeight - goBackBtn.offsetHeight);
+    const maxX = window.innerWidth - goBackBtn.offsetWidth - 20;
+    const maxY = window.innerHeight - goBackBtn.offsetHeight - 20;
 
-    goBackBtn.style.left = x + "px";
-    goBackBtn.style.top = y + "px";
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    goBackBtn.style.left = randomX + "px";
+    goBackBtn.style.top = randomY + "px";
 
     tries++;
+
+    if (tries == 1) {
+        goBackBtn.innerHTML = "Really? 🥺";
+    }
+    else if (tries == 2) {
+        goBackBtn.innerHTML = "Pleaseee 😭";
+    }
+    else if (tries == 3) {
+        goBackBtn.innerHTML = "Catch Me 😂";
+    }
 }
+let tries = 0;
+
+const goBackBtn = document.getElementById("goBackBtn");
+
+goBackBtn.addEventListener("mouseover", moveButton);
+
+</script>
+</body>
+</html>
