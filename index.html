@@ -496,7 +496,6 @@
   document.getElementById('password-input').addEventListener('keyup', function(e) {
     if (e.key === 'Enter') checkPassword();
   });
-  document.getElementById("unlockBtn").addEventListener("click", checkPassword);
 
   // ============================================
   // FLOATING HEARTS BACKGROUND (purely decorative)
@@ -577,13 +576,6 @@ function moveButton() {
     else if (tries == 3) {
         goBackBtn.innerHTML = "Catch Me 😂";
     }
-}
-let tries = 0;
-
-const goBackBtn = document.getElementById("goBackBtn");
-
-goBackBtn.addEventListener("mouseover", moveButton);
-
 </script>
 </body>
 </html>
