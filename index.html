@@ -323,7 +323,6 @@
 <div class="screen" id="screen-angry">
   <h1>😡 HOW DARE YOU</h1>
   <p class="subtitle">You really don't wanna see it?
-    Please. Try again.</p>
 <button id="goBackBtn"
 class="btn-secondary"
 style="border-color:#ff9aa8; color:#ff9aa8;">
@@ -529,23 +528,27 @@ const goBackBtn = document.getElementById("goBackBtn");
 
 goBackBtn.addEventListener("mouseover", moveButton);
 
+let tries = 0;
+const goBackBtn = document.getElementById("goBackBtn");
+
+goBackBtn.addEventListener("mouseenter", moveButton);
+
 function moveButton() {
 
     if (tries >= 3) {
-        goBackBtn.style.position = "static";
         goBackBtn.innerHTML = "Okay ❤️";
-
+        goBackBtn.style.position = "static";
         goBackBtn.onclick = function () {
-            showScreen('screen-ask');
+            showScreen("screen-ask");
         };
-
         return;
     }
 
-    const x = Math.random() * (window.innerWidth - 160);
-    const y = Math.random() * (window.innerHeight - 80);
-
     goBackBtn.style.position = "fixed";
+
+    const x = Math.random() * (window.innerWidth - goBackBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - goBackBtn.offsetHeight);
+
     goBackBtn.style.left = x + "px";
     goBackBtn.style.top = y + "px";
 
