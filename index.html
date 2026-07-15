@@ -552,18 +552,48 @@
       }
     });
     observer.observe(thankYouEl, { attributes: true, attributeFilter: ['class'] });
-function fireConfetti(){
-  for(let i=0;i<80;i++){
-    const c=document.createElement('div');
-    c.className='confetti-piece';
-    c.style.left=Math.random()*100+'vw';
-    c.style.background=['#ff6f91','#f4b942','#ffe3ea','#d94f70'][Math.floor(Math.random()*4)];
-    c.style.animationDuration=(2+Math.random()*2)+'s';
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),4500);
-  }
-}
+function fireConfetti() {
 
+    const colors = [
+        "#ff6f91",
+        "#ffb6c1",
+        "#ffd166",
+        "#ffffff",
+        "#ffe3ea",
+        "#d94f70",
+        "#ffc0cb"
+    ];
+
+    for (let i = 0; i < 180; i++) {
+
+        const piece = document.createElement("div");
+        piece.className = "confetti-piece";
+
+        piece.style.position = "fixed";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.top = "-20px";
+
+        piece.style.width = (6 + Math.random() * 8) + "px";
+        piece.style.height = (10 + Math.random() * 12) + "px";
+
+        piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+
+        piece.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        piece.style.opacity = "0.9";
+
+        piece.style.animationDuration =
+            (3 + Math.random() * 3) + "s";
+
+        piece.style.transform =
+            "rotate(" + Math.random() * 360 + "deg)";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => piece.remove(), 7000);
+    }
+}
 // Go Back button runs away 3 times
   // ==============================
 // GO BACK BUTTON RUNS AWAY
