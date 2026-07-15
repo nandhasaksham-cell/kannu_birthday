@@ -173,30 +173,29 @@
   .card .label { font-weight: 600; font-size: 0.95rem; }
 
   /* Fake "gallery" page for the camera icon */
-  .gallery-bar {
-    width: 100%;
-    max-width: 480px;
-    background: white;
-    border-radius: 16px;
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
+  .gallery-bar{
+    width:100%;
+    max-width:650px;
+    background:white;
+    border-radius:16px;
+    padding:14px 18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+    margin-bottom:20px;
     font-size: 0.95rem;
     color: #5f6368;
   }
 
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    width: 150%;
-    max-width: 600px;
-    z-index: 1;
-  }
-
+  ..gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
+    gap:6px;
+    width:100%;
+    max-width:700px;
+    margin:auto;
+}
   .gallery-grid .photo {
     aspect-ratio: 1 / 1;
     border-radius: 10px;
